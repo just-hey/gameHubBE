@@ -9,5 +9,8 @@ exports.seed = function(knex, Promise) {
         {username: 'steamUser', email: 'pubgguy@gmail.com', password: '$2a$10$f6avmjZc.ANrmDAw28lGOOgv3UlATGQBzyNlTAnCJB3Kv/6p40jb2', isAdmin: false, account_created_on: '2001-12-23 14:39:53.662522-05', last_login: '2001-12-23 14:39:53.662522-05'}, //pass is 12345
         {username: 'xXx420_noscopexXx', email: 'madcuzbad@hotmail.com', password: '$2a$10$zqWK5p/1UHqvXdfv8s9HFOcPpakcodQ1WWv6Y12IKGqSOodqERwtS', isAdmin: false, account_created_on: '2001-12-23 14:39:53.662522-05', last_login: '2001-12-23 14:39:53.662522-05'} //pass is smokesomedays
       ]);
-    });
+    })
+    .then(() => {
+      return knex.raw(`SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));`)
+    })
 };
