@@ -13,6 +13,9 @@ exports.seed = function(knex, Promise) {
         {game_id: 6, service_id: 3},
         {game_id: 2, service_id: 3},
         {game_id: 5, service_id: 3}
-    ]);
-  });
+      ]);
+    })
+    .then(() => {
+      return knex.raw(`SELECT setval('service_games_id_seq', (SELECT MAX(id) FROM service_games));`)
+    })
 };
