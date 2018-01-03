@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
@@ -7,6 +8,7 @@ require('dotenv').config({path: __dirname + '/.env'})
 
 const app = express()
 app.use(bodyParser.json())
+app.use(cors())
 
 // const gamerProfiles = require('./src/routes/gamerProfiles')
 // app.use('/api/gamers/:id/profile', gamerProfiles)
